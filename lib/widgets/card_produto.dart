@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 
 import '../theme/app_cores.dart';
-import 'placeholder_imagem.dart';
+import 'imagem_arredondada.dart';
 
 class CardProduto extends StatelessWidget {
-  const CardProduto({super.key});
+  const CardProduto({
+    super.key,
+    required this.imagem,
+    required this.restaurante,
+    required this.nome,
+    required this.preco,
+  });
+
+  final String imagem;
+  final String restaurante;
+  final String nome;
+  final String preco;
 
   @override
   Widget build(BuildContext context) {
@@ -18,61 +29,55 @@ class CardProduto extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const PlaceholderImagem(
-            largura: 88,
-            altura: 88,
-            texto: 'Imagem do produto',
-          ),
+          ImagemArredondada(caminho: imagem, largura: 92, altura: 92),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Nome do restaurante',
-                  style: TextStyle(
-                    fontSize: 10,
+                Text(
+                  restaurante,
+                  style: const TextStyle(
+                    fontSize: 11,
                     color: AppCores.textoSecundario,
                   ),
                 ),
-                const SizedBox(height: 4),
-                const Text(
-                  'Nome do produto',
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 4),
-                const Text(
-                  'Avaliação • Tempo de entrega',
-                  style: TextStyle(
-                    fontSize: 9,
-                    color: AppCores.textoSecundario,
+                const SizedBox(height: 2),
+                Text(
+                  nome,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'R\$ 00,00',
-                      style: TextStyle(
-                        fontSize: 13,
+                    Text(
+                      preco,
+                      style: const TextStyle(
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    OutlinedButton(
+                    FilledButton(
                       onPressed: () {},
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: Colors.black87,
-                        side: const BorderSide(color: Colors.black54),
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        minimumSize: const Size(0, 28),
+                      style: FilledButton.styleFrom(
+                        backgroundColor: AppCores.vermelho,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        minimumSize: const Size(0, 30),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6),
+                          borderRadius: BorderRadius.circular(8),
                         ),
                       ),
                       child: const Text(
                         'Adicionar',
-                        style: TextStyle(fontSize: 10),
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ],

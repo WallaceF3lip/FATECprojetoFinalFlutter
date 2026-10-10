@@ -9,6 +9,8 @@ class CabecalhoEndereco extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        const Icon(Icons.location_on, color: AppCores.vermelho, size: 22),
+        const SizedBox(width: 6),
         const Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,20 +29,25 @@ class CabecalhoEndereco extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {},
-          style: TextButton.styleFrom(foregroundColor: Colors.black87),
-          child: const Text('Alterar', style: TextStyle(fontSize: 12)),
+          style: TextButton.styleFrom(foregroundColor: AppCores.vermelho),
+          child: const Text(
+            'Alterar',
+            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+          ),
         ),
         const SizedBox(width: 4),
-        OutlinedButton(
+        FilledButton.icon(
           onPressed: () {},
-          style: OutlinedButton.styleFrom(
-            foregroundColor: Colors.black87,
-            side: const BorderSide(color: Colors.black54),
+          style: FilledButton.styleFrom(
+            backgroundColor: AppCores.vermelho,
+            foregroundColor: Colors.white,
+            padding: const EdgeInsets.symmetric(horizontal: 12),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
           ),
-          child: const Text('Carrinho'),
+          icon: const Icon(Icons.shopping_bag_outlined, size: 18),
+          label: const Text('Carrinho'),
         ),
       ],
     );

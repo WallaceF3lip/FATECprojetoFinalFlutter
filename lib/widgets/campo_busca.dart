@@ -8,31 +8,24 @@ class CampoBusca extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
+      height: 44,
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
         color: AppCores.fundoCinza,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: AppCores.borda),
       ),
-      child: Row(
+      child: const Row(
         children: [
-          const Text(
-            'Buscar',
-            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-          ),
-          Container(
-            width: 1,
-            height: 16,
-            margin: const EdgeInsets.symmetric(horizontal: 10),
-            color: AppCores.borda,
-          ),
-          const Expanded(
+          Icon(Icons.search, color: AppCores.vermelho, size: 20),
+          SizedBox(width: 8),
+          Expanded(
             child: TextField(
-              style: TextStyle(fontSize: 12),
+              cursorColor: AppCores.vermelho,
+              style: TextStyle(fontSize: 13),
               decoration: InputDecoration(
                 hintText: 'Digite um produto ou restaurante',
-                hintStyle: TextStyle(fontSize: 12, color: Colors.black38),
+                hintStyle: TextStyle(fontSize: 13, color: Colors.black38),
                 border: InputBorder.none,
                 isDense: true,
               ),

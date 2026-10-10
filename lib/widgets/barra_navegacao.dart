@@ -12,11 +12,11 @@ class BarraNavegacao extends StatelessWidget {
   final int selecionada;
   final ValueChanged<int> onSelecionar;
 
-  static const _icones = [
-    Icons.casino_outlined,
-    Icons.search,
-    Icons.receipt_long_outlined,
-    Icons.person_outline,
+  static const _abas = [
+    (Icons.home_outlined, 'Início'),
+    (Icons.search, 'Busca'),
+    (Icons.receipt_long_outlined, 'Pedidos'),
+    (Icons.person_outline, 'Perfil'),
   ];
 
   @override
@@ -31,20 +31,34 @@ class BarraNavegacao extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           child: Row(
-            children: List.generate(_icones.length, (index) {
+            children: List.generate(_abas.length, (index) {
+              final (icone, rotulo) = _abas[index];
               final ativa = index == selecionada;
+              final cor = ativa ? AppCores.vermelho : Colors.black45;
               return Expanded(
                 child: GestureDetector(
                   onTap: () => onSelecionar(index),
                   child: Container(
-                    height: 44,
+                    height: 52,
                     decoration: BoxDecoration(
-                      color: ativa ? AppCores.fundoCinza : Colors.transparent,
+                      color:
+                          ativa ? AppCores.vermelhoClaro : Colors.transparent,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Icon(
-                      _icones[index],
-                      color: ativa ? Colors.black87 : Colors.black45,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(icone, color: cor),
+                        Text(
+                          rotulo,
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: cor,
+                            fontWeight:
+                                ativa ? FontWeight.w600 : FontWeight.normal,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

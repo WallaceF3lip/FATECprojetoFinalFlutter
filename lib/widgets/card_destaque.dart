@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme/app_cores.dart';
-import 'placeholder_imagem.dart';
+import 'imagem_arredondada.dart';
 
 class CardDestaque extends StatelessWidget {
   const CardDestaque({super.key});
@@ -11,9 +11,8 @@ class CardDestaque extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppCores.fundoCinza,
+        color: AppCores.vermelho,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppCores.borda),
       ),
       child: Row(
         children: [
@@ -24,50 +23,52 @@ class CardDestaque extends StatelessWidget {
                 const Text(
                   'DESTAQUE',
                   style: TextStyle(
-                    fontSize: 9,
-                    letterSpacing: 1,
-                    color: AppCores.textoSecundario,
-                  ),
-                ),
-                const SizedBox(height: 14),
-                const Text(
-                  'Título da promoção',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 2),
-                const Text(
-                  'Breve descrição da promoção.',
-                  style: TextStyle(
                     fontSize: 10,
-                    color: AppCores.textoSecundario,
+                    letterSpacing: 1,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white70,
                   ),
                 ),
                 const SizedBox(height: 10),
-                OutlinedButton(
+                const Text(
+                  'Combo em dobro',
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                const Text(
+                  '2 hambúrgueres + fritas com 30% off.',
+                  style: TextStyle(fontSize: 11, color: Colors.white),
+                ),
+                const SizedBox(height: 12),
+                FilledButton(
                   onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: Colors.black87,
+                  style: FilledButton.styleFrom(
                     backgroundColor: Colors.white,
-                    side: const BorderSide(color: Colors.black54),
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    minimumSize: const Size(0, 30),
+                    foregroundColor: AppCores.vermelho,
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    minimumSize: const Size(0, 32),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
+                      borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                   child: const Text(
                     'Ver promoção',
-                    style: TextStyle(fontSize: 10),
+                    style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
                   ),
                 ),
               ],
             ),
           ),
           const SizedBox(width: 12),
-          const PlaceholderImagem(
+          const ImagemArredondada(
+            caminho: 'img/default.png',
             largura: 128,
-            altura: 88,
-            texto: 'Espaço para imagem',
+            altura: 100,
+            raio: 10,
           ),
         ],
       ),

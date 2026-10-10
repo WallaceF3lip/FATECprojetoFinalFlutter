@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../theme/app_cores.dart';
+
 class TituloSecao extends StatelessWidget {
   const TituloSecao({
     super.key,
@@ -21,7 +23,14 @@ class TituloSecao extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {},
-          child: Text(textoAcao, style: const TextStyle(fontSize: 11)),
+          child: Text(
+            textoAcao,
+            style: const TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: AppCores.vermelho,
+            ),
+          ),
         ),
       ],
     );

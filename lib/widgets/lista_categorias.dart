@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme/app_cores.dart';
+import 'imagem_arredondada.dart';
 
 class ListaCategorias extends StatelessWidget {
   const ListaCategorias({
@@ -12,48 +13,52 @@ class ListaCategorias extends StatelessWidget {
   final int selecionada;
   final ValueChanged<int> onSelecionar;
 
+  static const _categorias = [
+    ('Lanches', 'img/default_category.png'),
+    ('Pizza', 'img/default_category.png'),
+    ('Marmita', 'img/default_category.png'),
+    ('Salgados', 'img/default_category.png'),
+    ('Açaí', 'img/default_category.png'),
+    ('Sorvete', 'img/default_category.png'),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 72,
+      height: 84,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemCount: 4,
-        separatorBuilder: (_, _) => const SizedBox(width: 24),
+        itemCount: _categorias.length,
+        separatorBuilder: (_, _) => const SizedBox(width: 16),
         itemBuilder: (context, index) {
+          final (nome, imagem) = _categorias[index];
           final ativa = index == selecionada;
           return GestureDetector(
             onTap: () => onSelecionar(index),
             child: Column(
               children: [
                 Container(
-                  width: 44,
-                  height: 44,
+                  padding: const EdgeInsets.all(2),
                   decoration: BoxDecoration(
-                    color: ativa
-                        ? const Color(0xFFDDDDDD)
-                        : AppCores.fundoCinza,
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: ativa ? Colors.black54 : AppCores.borda,
-                      width: ativa ? 1.5 : 1,
+                      color: ativa ? AppCores.vermelho : Colors.transparent,
+                      width: 2,
                     ),
                   ),
-                  child: const Center(
-                    child: Text(
-                      'Ícone',
-                      style: TextStyle(
-                        fontSize: 9,
-                        color: AppCores.textoSecundario,
-                      ),
-                    ),
+                  child: ImagemArredondada(
+                    caminho: imagem,
+                    largura: 52,
+                    altura: 52,
+                    raio: 9,
                   ),
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  'Categoria ${index + 1}',
+                  nome,
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 11,
+                    color: ativa ? AppCores.vermelho : Colors.black87,
                     fontWeight: ativa ? FontWeight.w600 : FontWeight.normal,
                   ),
                 ),

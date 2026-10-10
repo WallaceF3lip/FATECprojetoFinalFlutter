@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
       title: 'Projeto Final',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.black),
+        colorScheme: .fromSeed(seedColor: const Color(0xFFEA1D2C)),
+        scaffoldBackgroundColor: Colors.white,
       ),
       home: const HomeScreen(),
     );
