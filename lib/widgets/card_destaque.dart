@@ -4,7 +4,16 @@ import '../theme/app_cores.dart';
 import 'imagem_arredondada.dart';
 
 class CardDestaque extends StatelessWidget {
-  const CardDestaque({super.key});
+  const CardDestaque({
+    super.key,
+    required this.titulo,
+    required this.descricao,
+    required this.imagem,
+  });
+
+  final String titulo;
+  final String descricao;
+  final String imagem;
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +39,18 @@ class CardDestaque extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                const Text(
-                  'Combo em dobro',
-                  style: TextStyle(
+                Text(
+                  titulo,
+                  style: const TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
                 const SizedBox(height: 2),
-                const Text(
-                  '2 hambúrgueres + fritas com 30% off.',
-                  style: TextStyle(fontSize: 11, color: Colors.white),
+                Text(
+                  descricao,
+                  style: const TextStyle(fontSize: 11, color: Colors.white),
                 ),
                 const SizedBox(height: 12),
                 FilledButton(
@@ -64,8 +73,8 @@ class CardDestaque extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 12),
-          const ImagemArredondada(
-            caminho: 'img/default.png',
+          ImagemArredondada(
+            caminho: imagem,
             largura: 128,
             altura: 100,
             raio: 10,
